@@ -14,8 +14,8 @@
         android:hint="@string/write_a_message"
         android:importantForAutofill="no"
         android:maxHeight="80dp"
-        android:textColor="#2e8b57"
-        android:textColorHint="#2e8b57"
+        android:textColor="#006d5b"
+        android:textColorHint="#006d5b"
         tools:ignore="TextFields" />
 
     <ImageView
