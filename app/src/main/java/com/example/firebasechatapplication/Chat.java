@@ -2,6 +2,7 @@ package com.example.firebasechatapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -30,6 +31,8 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        setTitle(getResources().getString(R.string.chat_with, UserDetails.chatWith));
+
         layout = (LinearLayout)findViewById(R.id.layout1);
         sendButton = (ImageView)findViewById(R.id.sendButton);
         messageArea = (EditText)findViewById(R.id.messageArea);
@@ -50,6 +53,7 @@ public class Chat extends AppCompatActivity {
                     map.put("user", UserDetails.username);
                     reference1.push().setValue(map);
                     reference2.push().setValue(map);
+                    messageArea.setText(null);
                 }
             }
         });
@@ -94,14 +98,18 @@ public class Chat extends AppCompatActivity {
     public void addMessageBox(String message, int type){
         TextView textView = new TextView(Chat.this);
         textView.setText(message);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, 0, 0, 10);
         textView.setLayoutParams(lp);
 
         if(type == 1) {
+            lp.gravity = Gravity.RIGHT;
+            textView.setGravity(Gravity.FILL);
             textView.setBackgroundResource(R.drawable.rounded_corner1);
         }
         else{
+            lp.gravity = Gravity.LEFT;
+            textView.setGravity(Gravity.FILL);
             textView.setBackgroundResource(R.drawable.rounded_corner2);
         }
 

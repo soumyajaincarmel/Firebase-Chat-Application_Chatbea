@@ -13,13 +13,15 @@
         android:theme="@style/Theme.FirebaseChatApplication">
         <activity
             android:name=".Users"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Select Chat"/>
         <activity
             android:name=".Register"
             android:exported="true" />
         <activity
             android:name=".Chat"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/chat_with"/>
         <activity
             android:name=".Login"
             android:exported="true">

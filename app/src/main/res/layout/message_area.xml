@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
+    android:background="#f0f0f0"
     android:gravity="bottom"
     android:orientation="horizontal">
 
@@ -13,8 +13,8 @@
         android:layout_weight="1"
         android:hint="Write a message..."
         android:maxHeight="80dp"
-        android:textColor="#CFD8DC"
-        android:textColorHint="#CFD8DC" />
+        android:textColor="#2e8b57"
+        android:textColorHint="#2e8b57" />
 
     <ImageView
         android:id="@+id/sendButton"
@@ -22,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="4"
         android:padding="4dp"
-        android:src="@android:drawable/ic_menu_send" />
+        android:src="@drawable/ic_send_24dp" />
 </LinearLayout>
 
