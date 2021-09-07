@@ -15,15 +15,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/secondaryDarkColor"
         android:gravity="center"
         android:text="@string/login"
         android:textSize="30sp" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_login_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/primaryColor"
+        android:textColorHint="@color/primaryColor"
         android:hint="@string/enter_username"
         android:inputType="text"
         android:maxLines="1"
@@ -34,6 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/primaryColor"
+        android:textColorHint="@color/primaryColor"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         android:maxLines="1"
@@ -43,6 +48,7 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/secondaryColor"
         android:layout_marginBottom="20dp"
         android:text="@string/login" />
 
@@ -52,6 +58,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/click_here_to_register"
+        android:textColor="@color/secondaryColor"
+        android:textStyle="bold|italic"
         android:textSize="20sp" />
 
 </LinearLayout>

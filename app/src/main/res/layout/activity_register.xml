@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/secondaryDarkColor"
         android:gravity="center"
         android:text="@string/register"
         android:textSize="30sp" />
@@ -24,6 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/primaryColor"
+        android:textColorHint="@color/primaryColor"
         android:autofillHints="username"
         android:hint="@string/enter_username"
         android:inputType="text"
@@ -34,6 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/primaryColor"
+        android:textColorHint="@color/primaryColor"
         android:autofillHints="password"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
@@ -43,6 +48,7 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/secondaryColor"
         android:layout_marginBottom="20dp"
         android:text="@string/register" />
 
@@ -51,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/secondaryColor"
         android:text="@string/click_here_to_login"
         android:textSize="20sp" />
 
