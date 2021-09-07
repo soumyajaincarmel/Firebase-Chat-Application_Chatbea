@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f0f0f0"
@@ -7,20 +8,23 @@
     android:orientation="horizontal">
 
     <EditText
-        android:id="@+id/messageArea"
+        android:id="@+id/et_message_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:hint="Write a message..."
+        android:hint="@string/write_a_message"
+        android:importantForAutofill="no"
         android:maxHeight="80dp"
         android:textColor="#2e8b57"
-        android:textColorHint="#2e8b57" />
+        android:textColorHint="#2e8b57"
+        tools:ignore="TextFields" />
 
     <ImageView
-        android:id="@+id/sendButton"
+        android:id="@+id/iv_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4"
+        android:contentDescription="@string/send_button_content_description"
         android:padding="4dp"
         android:src="@drawable/ic_send_24dp" />
 </LinearLayout>

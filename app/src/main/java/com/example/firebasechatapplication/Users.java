@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Users extends AppCompatActivity {
-    ListView usersList;
-    TextView noUsersText;
-    ArrayList<String> al = new ArrayList<>();
+    ListView lvUsersList;
+    TextView tvNoUsers;
+    ArrayList<String> alUsers = new ArrayList<>();
     int totalUsers = 0;
     ProgressDialog pd;
 
@@ -36,8 +36,8 @@ public class Users extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
 
-        usersList = (ListView)findViewById(R.id.usersList);
-        noUsersText = (TextView)findViewById(R.id.noUsersText);
+        lvUsersList = (ListView) findViewById(R.id.lv_users_list);
+        tvNoUsers = (TextView) findViewById(R.id.tv_no_users);
 
         pd = new ProgressDialog(Users.this);
         pd.setMessage("Loading...");
@@ -45,12 +45,12 @@ public class Users extends AppCompatActivity {
 
         String url = "https://fir-chat-application-f3907-default-rtdb.firebaseio.com/users.json";
 
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 doOnSuccess(s);
             }
-        },new Response.ErrorListener(){
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 System.out.println("" + volleyError);
@@ -60,27 +60,27 @@ public class Users extends AppCompatActivity {
         RequestQueue rQueue = Volley.newRequestQueue(Users.this);
         rQueue.add(request);
 
-        usersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvUsersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserDetails.chatWith = al.get(position);
+                UserDetails.chatWith = alUsers.get(position);
                 startActivity(new Intent(Users.this, Chat.class));
             }
         });
     }
 
-    public void doOnSuccess(String s){
+    public void doOnSuccess(String s) {
         try {
             JSONObject obj = new JSONObject(s);
 
             Iterator i = obj.keys();
-            String key = "";
+            String key;
 
-            while(i.hasNext()){
+            while (i.hasNext()) {
                 key = i.next().toString();
 
-                if(!key.equals(UserDetails.username)) {
-                    al.add(key);
+                if (!key.equals(UserDetails.username)) {
+                    alUsers.add(key);
                 }
 
                 totalUsers++;
@@ -90,14 +90,13 @@ public class Users extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(totalUsers <=1){
-            noUsersText.setVisibility(View.VISIBLE);
-            usersList.setVisibility(View.GONE);
-        }
-        else{
-            noUsersText.setVisibility(View.GONE);
-            usersList.setVisibility(View.VISIBLE);
-            usersList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
+        if (totalUsers <= 1) {
+            tvNoUsers.setVisibility(View.VISIBLE);
+            lvUsersList.setVisibility(View.GONE);
+        } else {
+            tvNoUsers.setVisibility(View.GONE);
+            lvUsersList.setVisibility(View.VISIBLE);
+            lvUsersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alUsers));
         }
 
         pd.dismiss();

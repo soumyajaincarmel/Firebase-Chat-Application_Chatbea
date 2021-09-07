@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,40 +16,42 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Login"
-        android:textSize="30dp" />
+        android:text="@string/login"
+        android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/et_login_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="enter username"
+        android:hint="@string/enter_username"
         android:inputType="text"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:autofillHints="username" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="enter password"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:autofillHints="password" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Login" />
+        android:text="@string/login" />
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/tv_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Click here to register"
-        android:textSize="20dp" />
+        android:text="@string/click_here_to_register"
+        android:textSize="20sp" />
 
 </LinearLayout>
