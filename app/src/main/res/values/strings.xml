@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Firebase Chat Application</string>
+    <string name="app_name">Chatbea</string>
     <string name="chat_with">%s</string>
     <string name="login">Login</string>
     <string name="enter_username">Enter Username</string>

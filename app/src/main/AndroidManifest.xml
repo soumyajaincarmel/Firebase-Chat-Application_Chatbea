@@ -17,14 +17,16 @@
             android:label="Select Chat"/>
         <activity
             android:name=".Register"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Register - Chatbea"/>
         <activity
             android:name=".Chat"
             android:exported="true"
             android:label="@string/chat_with"/>
         <activity
             android:name=".Login"
-            android:exported="true">
+            android:exported="true"
+            android:label="Login - Chatbea">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
