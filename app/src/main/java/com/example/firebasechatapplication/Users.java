@@ -1,6 +1,8 @@
 package com.example.firebasechatapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,8 +27,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Users extends AppCompatActivity {
-    ListView lvUsersList;
+public class Users extends AppCompatActivity implements UsersAdapter.ItemClickListener {
+
+    UsersAdapter adapter;
+    RecyclerView rvUsersList;
     TextView tvNoUsers;
     ArrayList<String> alUsers = new ArrayList<>();
     int totalUsers = 0;
@@ -35,9 +40,9 @@ public class Users extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
-
-        lvUsersList = (ListView) findViewById(R.id.lv_users_list);
         tvNoUsers = (TextView) findViewById(R.id.tv_no_users);
+        rvUsersList = (RecyclerView) findViewById(R.id.rv_user_list);
+        rvUsersList.setLayoutManager(new LinearLayoutManager(this));
 
         pd = new ProgressDialog(Users.this);
         pd.setMessage("Loading...");
@@ -60,13 +65,6 @@ public class Users extends AppCompatActivity {
         RequestQueue rQueue = Volley.newRequestQueue(Users.this);
         rQueue.add(request);
 
-        lvUsersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserDetails.chatWith = alUsers.get(position);
-                startActivity(new Intent(Users.this, Chat.class));
-            }
-        });
     }
 
     public void doOnSuccess(String s) {
@@ -92,13 +90,21 @@ public class Users extends AppCompatActivity {
 
         if (totalUsers <= 1) {
             tvNoUsers.setVisibility(View.VISIBLE);
-            lvUsersList.setVisibility(View.GONE);
+            rvUsersList.setVisibility(View.GONE);
         } else {
             tvNoUsers.setVisibility(View.GONE);
-            lvUsersList.setVisibility(View.VISIBLE);
-            lvUsersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alUsers));
+            rvUsersList.setVisibility(View.VISIBLE);
+            adapter = new UsersAdapter(this, alUsers);
+            adapter.setClickListener(this);
+            rvUsersList.setAdapter(adapter);
         }
 
         pd.dismiss();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        UserDetails.chatWith = alUsers.get(position);
+        startActivity(new Intent(Users.this, Chat.class));
     }
 }
