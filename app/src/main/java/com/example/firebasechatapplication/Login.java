@@ -3,7 +3,9 @@ package com.example.firebasechatapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +16,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.firebase.client.Firebase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
     TextView tvRegister;
@@ -25,10 +30,25 @@ public class Login extends AppCompatActivity {
     String strUsername, strPassword;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if(isUsernameSaved())
+        {
+            SharedPreferences sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
+            UserDetails.username = sharedPref.getString("USERNAME", null);
+            UserDetails.password = sharedPref.getString("PASSWORD", null);
+            startActivity(new Intent(this, Users.class));
+        }
+        else
+        {
+            Toast.makeText(this, "Login First", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         tvRegister = (TextView) findViewById(R.id.tv_register);
         etLoginUsername = (EditText) findViewById(R.id.et_login_username);
         etLoginPassword = (EditText) findViewById(R.id.et_login_password);
@@ -62,6 +82,7 @@ public class Login extends AppCompatActivity {
                             } else if (obj.getJSONObject(strUsername).getString("password").equals(strPassword)) {
                                 UserDetails.username = strUsername;
                                 UserDetails.password = strPassword;
+                                saveUserInfo(strUsername, strPassword);
                                 startActivity(new Intent(Login.this, Users.class));
                                 finish();
                             } else {
@@ -84,4 +105,19 @@ public class Login extends AppCompatActivity {
 
         });
     }
+
+    void saveUserInfo(String username, String password)
+    {
+        SharedPreferences sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("USERNAME", username);
+        editor.putString("PASSWORD", password);
+        editor.apply();
+    }
+
+    boolean isUsernameSaved() {
+        SharedPreferences sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
+        return sharedPref.contains("USERNAME");
+    }
+
 }
