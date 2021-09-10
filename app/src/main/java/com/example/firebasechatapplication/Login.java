@@ -16,12 +16,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.firebase.client.Firebase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Map;
 
 public class Login extends AppCompatActivity {
     TextView tvRegister;
@@ -32,16 +29,13 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(isUsernameSaved())
-        {
+        if (isUsernameSaved()) {
             SharedPreferences sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
             UserDetails.username = sharedPref.getString("USERNAME", null);
             UserDetails.password = sharedPref.getString("PASSWORD", null);
             startActivity(new Intent(this, Users.class));
-        }
-        else
-        {
-            Toast.makeText(this, "Login First", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Login First!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -86,7 +80,7 @@ public class Login extends AppCompatActivity {
                                 startActivity(new Intent(Login.this, Users.class));
                                 finish();
                             } else {
-                                Toast.makeText(Login.this, "incorrect password", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Login.this, "Incorrect Password! Try Again!", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -106,8 +100,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    void saveUserInfo(String username, String password)
-    {
+    void saveUserInfo(String username, String password) {
         SharedPreferences sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("USERNAME", username);

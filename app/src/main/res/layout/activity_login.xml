@@ -18,10 +18,10 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/login"
-        android:textStyle="bold"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -39,56 +39,56 @@
             android:padding="16dp">
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_login_username"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_username"
-                android:inputType="text"
-                android:textSize="16sp"/>
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_login_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_username"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_login_password"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_password"
-                android:inputType="textPassword"
-                android:textSize="16sp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword"
+                    android:textSize="16sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/button_gradient_background"
-            android:text="@string/login"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="30dp"
-            android:padding="8dp"
-            android:textColor="@color/primaryTextColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_gradient_background"
+                android:padding="8dp"
+                android:text="@string/login"
+                android:textColor="@color/primaryTextColor" />
 
         </LinearLayout>
 
@@ -98,11 +98,11 @@
         android:id="@+id/tv_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:gravity="center"
         android:text="@string/click_here_to_register"
         android:textColor="@color/secondaryColor"
         android:textSize="20sp"
-        android:layout_margin="30dp"
         android:textStyle="bold|italic" />
 
 </LinearLayout>
