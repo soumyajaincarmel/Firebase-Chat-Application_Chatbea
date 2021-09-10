@@ -75,13 +75,11 @@ public class Register extends AppCompatActivity {
                             if (!obj.has(strUsername)) {
                                 reference.child(strUsername).child("password").setValue(strPassword);
                                 Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(Register.this, Login.class));
-                                finish();
                             } else {
                                 Toast.makeText(Register.this, "Username already exists, Login!", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(Register.this, Login.class));
-                                finish();
                             }
+                            startActivity(new Intent(Register.this, Login.class));
+                            finish();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -8,11 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -55,12 +51,7 @@ public class Users extends AppCompatActivity implements UsersAdapter.ItemClickLi
             public void onResponse(String s) {
                 doOnSuccess(s);
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                System.out.println("" + volleyError);
-            }
-        });
+        }, volleyError -> System.out.println("" + volleyError));
 
         RequestQueue rQueue = Volley.newRequestQueue(Users.this);
         rQueue.add(request);
