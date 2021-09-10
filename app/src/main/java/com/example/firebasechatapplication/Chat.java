@@ -103,11 +103,13 @@ public class Chat extends AppCompatActivity {
         if (type == 1) {
             lp.gravity = Gravity.END;
             tvMessage.setGravity(Gravity.FILL);
+            tvMessage.setTextSize(18);
             tvMessage.setTextColor(getResources().getColor(R.color.primaryTextColor));
             tvMessage.setBackgroundResource(R.drawable.rounded_corner1);
         } else {
             lp.gravity = Gravity.START;
             tvMessage.setGravity(Gravity.FILL);
+            tvMessage.setTextSize(18);
             tvMessage.setTextColor(getResources().getColor(R.color.secondaryTextColor));
             tvMessage.setBackgroundResource(R.drawable.rounded_corner2);
         }
