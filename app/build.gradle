@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    archivesBaseName = "Chatbea"
     compileSdk 31
 
     defaultConfig {
